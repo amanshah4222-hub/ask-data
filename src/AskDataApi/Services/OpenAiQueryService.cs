@@ -18,7 +18,7 @@ public class OpenAiSqlService
                 Environment.GetEnvironmentVariable("OPENAI_API_KEY")
                 ?? throw new InvalidOperationException("OPENAI_API_KEY missing"));
 
-        _model = config["OpenAI:Model"] ?? "gpt-4o-mini";
+        _model = config["OpenAI:Model"] ?? "llama-3.1-8b-instant";
     }
 
     public async Task<(string sql, double confidence)> BuildSqlAsync(string question, int? limit, CancellationToken ct = default)
@@ -40,17 +40,17 @@ public class OpenAiSqlService
         """;
 
         var payload = new
-        {
-            model = _model,
-            messages = new object[]
-            {
-                new { role = "system", content = systemPrompt },
-                new { role = "user", content = question }
-            },
-            temperature = 0
-        };
+                    {
+                        model = _model,
+                        messages = new object[]
+                        {
+                            new { role = "system", content = systemPrompt },
+                            new { role = "user", content = question }
+                        },
+                        temperature = 0
+                    };
 
-        var res = await _http.PostAsJsonAsync("https://api.openai.com/v1/chat/completions", payload, ct);
+        var res = await _http.PostAsJsonAsync("https://api.groq.com/openai/v1/chat/completions", payload, ct);
         res.EnsureSuccessStatusCode();
 
         using var doc = JsonDocument.Parse(await res.Content.ReadAsStringAsync(ct));
