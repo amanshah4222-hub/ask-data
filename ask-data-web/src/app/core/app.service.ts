@@ -6,7 +6,7 @@ export class ApiService {
   private http = inject(HttpClient);
 
   // point this to your Zeabur API:
-  private baseUrl = 'https://ask.zeabur.app';
+  private baseUrl = 'https://ask-data-7zej.onrender.com';
 
   ask(question: string, limit = 10) {
     return this.http.post<{ data: any[]; explain: any }>(
