@@ -1,9 +1,8 @@
-// src/app/app.component.ts
-import { Component, signal } from '@angular/core';
-import { NgIf, NgFor } from '@angular/common';   // 👈 add this
-import { ApiService } from './core/app.service';
+import { Component, inject, signal } from '@angular/core';
+import { NgIf, NgFor, AsyncPipe, JsonPipe } from '@angular/common';
+import { AuthService } from '@auth0/auth0-angular';
 
-// child components
+import { ApiService } from './core/app.service';
 import { AskInputComponent } from './ask-input/ask-input.component';
 import { ResultGridComponent } from './result-grid/result-grid.component';
 import { ExplainPanelComponent } from './explain-panel/explain-panel.component';
@@ -13,16 +12,19 @@ import { ExplainPanelComponent } from './explain-panel/explain-panel.component';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  // 👇 IMPORTANT: add NgIf (and NgFor if you ever ngFor here)
   imports: [
     NgIf,
     NgFor,
+    AsyncPipe,
+    JsonPipe,
     AskInputComponent,
     ResultGridComponent,
-    ExplainPanelComponent
+    ExplainPanelComponent,
   ],
 })
 export class AppComponent {
+  auth = inject(AuthService);
+
   busy = signal(false);
   rows = signal<any[]>([]);
   columns = signal<string[]>([]);
@@ -30,6 +32,22 @@ export class AppComponent {
   error = signal<string | null>(null);
 
   constructor(private api: ApiService) {}
+
+  login() {
+    this.auth.loginWithRedirect();
+  }
+
+  signup() {
+    this.auth.loginWithRedirect({
+      authorizationParams: { screen_hint: 'signup' },
+    });
+  }
+
+  logout() {
+    this.auth.logout({
+      logoutParams: { returnTo: window.location.origin },
+    });
+  }
 
   onAsk(question: string) {
     this.busy.set(true);

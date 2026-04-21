@@ -38,3 +38,12 @@
 @media(max-width: 900px) {
   .content { grid-template-columns: 1fr; }
 }
+
+.spacer {
+  flex: 1;
+}
+
+.user-email {
+  font-size: 0.9rem;
+  color: #374151;
+}
