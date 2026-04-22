@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { AppComponent } from './app.component';
 import { ApiService } from './core/app.service';
+import { AuthService } from '@auth0/auth0-angular';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -27,6 +28,17 @@ describe('AppComponent', () => {
                 elapsedMs: 123
               }
             })
+          }
+        },
+        {
+          provide: AuthService,
+          useValue: {
+            isLoading$: of(false),
+            isAuthenticated$: of(true),
+            user$: of({ email: 'test@example.com', name: 'Test User' }),
+            error$: of(null),
+            loginWithRedirect: jasmine.createSpy('loginWithRedirect'),
+            logout: jasmine.createSpy('logout'),
           }
         }
       ]
