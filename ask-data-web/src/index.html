@@ -5,6 +5,23 @@
   <title>AskDataWeb</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+  http-equiv="Content-Security-Policy"
+  content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data: https:;
+    font-src 'self' data: https:;
+    connect-src 'self' https://dev-0bbgpca7z0e58380.uk.auth0.com https://ask-data-7zej.onrender.com;
+    frame-src 'self' https://dev-0bbgpca7z0e58380.uk.auth0.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self' https://dev-0bbgpca7z0e58380.uk.auth0.com;
+  "
+>
+
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
