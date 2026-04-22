@@ -45,7 +45,7 @@ export class AppComponent {
 
   logout() {
     this.auth.logout({
-      logoutParams: { returnTo: window.location.origin },
+      logoutParams: { returnTo: 'https://amanshah4222-hub.github.io/ask-data/' },
     });
   }
 
