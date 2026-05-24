@@ -50,10 +50,18 @@ export class AppComponent {
   }
 
   onAsk(question: string) {
+  if (this.busy()) return;
+
+    const trimmed = question?.trim();
+    if (!trimmed) {
+      this.error.set('Please enter a question.');
+      return;
+    }
+
     this.busy.set(true);
     this.error.set(null);
 
-    this.api.ask(question, 10).subscribe({
+    this.api.ask(trimmed, 10).subscribe({
       next: (res) => {
         const data = res?.data ?? [];
         this.rows.set(data);
