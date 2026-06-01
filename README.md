@@ -42,7 +42,7 @@ To ensure that AskData becomes production-ready, the project focuses on observab
 
 ---
 
-## Key Features
+## Features
 
 - Natural language interface for querying structured SQL data  
 - Live schema-aware SQL generation using an LLM  
@@ -57,7 +57,7 @@ To ensure that AskData becomes production-ready, the project focuses on observab
 
 ---
 
-## Project Goals
+## Goals
 
 - Demonstrate a production-grade LLM-powered data access system  
 - Showcase secure AI integration in enterprise-style software  
