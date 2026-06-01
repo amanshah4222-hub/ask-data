@@ -26,8 +26,7 @@ To ensure that AskData becomes production-ready, the project focuses on observab
 
 ### Database & Authentication
 - Neon PostgreSQL (serverless, branch-aware)
-- Neon Auth (email/password authentication)
-- Automatic user synchronization into Postgres
+- Auth0 (email/password authentication)
 
 ### AI & Data Layer
 - LLM-based natural language to SQL translation
@@ -39,7 +38,7 @@ To ensure that AskData becomes production-ready, the project focuses on observab
 - GitHub Codespaces
 - CI/CD via GitHub Actions
 - Containerized deployment
-- Zeabur for hosting backend services
+- Render for hosting backend services
 
 ---
 
