@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
       domain: 'dev-0bbgpca7z0e58380.uk.auth0.com',
       clientId: 'sBPwU8LAqmCFQMOA1aXSwNAkclWqfo03',
       authorizationParams: {
-        redirect_uri: 'https://amanshah8.github.io/LLM-Driven-Analytics-Platform/',
+        redirect_uri: 'https://amanshah8.github.io/LLMDrivenAnalyticsPlatform/',
       },
 
       // Keep this block commented until you create an Auth0 API

@@ -45,7 +45,7 @@ export class AppComponent {
 
   logout() {
     this.auth.logout({
-      logoutParams: { returnTo: 'https://amanshah8.github.io/LLM-Driven-Analytics-Platform/' },
+      logoutParams: { returnTo: 'https://amanshah8.github.io/LLMDrivenAnalyticsPlatform/' },
     });
   }
 
